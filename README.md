@@ -211,4 +211,5 @@ npm test  # 17 tests passing
 
 ### 5. Enhanced Security
 - Rate limiting per wallet or some kind of fraud detection before submitting the queued transaction to chain.
+- 
 
