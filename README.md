@@ -166,7 +166,7 @@ npm run worker
 ```
 
 ### 4. Test
-You can edit these 2 foloowing scripts to try and post curl requests to the server.
+You can edit these 2 following scripts to try and post curl requests to the server.
 ```bash
 # Generate signed payload and submit
 npx ts-node scripts/generateSignedPayload.ts
