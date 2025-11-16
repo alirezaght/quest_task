@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: voyagames-backend
+    ports:
+      - "4000:4000"
+    environment:
+      - CONTRACT_ADDRESS=${CONTRACT_ADDRESS}
+      - RPC_URL=${RPC_URL}
+      - PRIVATE_KEY=${PRIVATE_KEY}
+      - CHAIN=${CHAIN:-sepolia}
+      - PORT=4000
+    volumes:
+      - ./backend/src:/app/src
+      - ./backend/src/db:/app/src/db
+    command: npm run dev
+    restart: unless-stopped
+
+  worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: voyagames-worker
+    environment:
+      - CONTRACT_ADDRESS=${CONTRACT_ADDRESS}
+      - RPC_URL=${RPC_URL}
+      - PRIVATE_KEY=${PRIVATE_KEY}
+      - CHAIN=${CHAIN:-sepolia}
+    volumes:
+      - ./backend/src:/app/src
+      - ./backend/src/db:/app/src/db
+    command: npm run worker
+    restart: unless-stopped
+    depends_on:
+      - backend
