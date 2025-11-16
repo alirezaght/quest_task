@@ -230,4 +230,4 @@ dist
 .ionide
 
 # No need to track database files
-./backend/src/db
+backend/src/db
