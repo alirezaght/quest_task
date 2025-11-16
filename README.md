@@ -85,7 +85,7 @@ Each validator implements custom logic for verification and point calculation, a
 
 ### Security
 - ECDSA signature verification
-- Timestamp validation (30-second window prevents replay attacks)
+- Timestamp validation (Just to create a short lived token. for production probably we have wallet-connect senario with proper auth mechanism)
 - Idempotency (wallet + quest_id uniqueness)
 
 ### Supported Chains
